@@ -1,0 +1,304 @@
+/* body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.all {
+    background-color: #ffffff;
+    width: 450px;
+    padding: 30px;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.all h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #000000;
+}
+
+.name,
+.qty,
+.price,
+.des {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.all label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.all input[type="text"],
+.all input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.all input[type="number"]:focus {
+    border-color: #1d70b8;
+}
+
+.submit {
+    margin-top: 10px;
+}
+
+.submit input[type="submit"] {
+    background-color: #1d70b8;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.submit input[type="submit"]:hover {
+    background-color: #155a96;
+} */
+/* Base Reset and Variables */
+:root {
+    --bg-main: #f3f4f6;
+    --bg-card: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --border-color: #e5e7eb;
+    --primary-blue: #0070f3;
+    --primary-hover: #0051b3;
+    --danger-red: #dc2626;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Layout Container & Wrapper --- */
+.all {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 32px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+/* --- Alerts and Errors --- */
+ul {
+    list-style: none;
+    background-color: #fef2f2;
+    border-left: 4px solid var(--danger-red);
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+}
+
+ul li {
+    color: #b91c1c;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+/* Success Alert */
+.all > div:has(> .success),
+div:contains("success") {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #16a34a;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* --- Form Design (Create and Edit Views) --- */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Description spans both columns to look like the image mockup */
+form div.des,
+form div:has(textarea),
+form div:has(input[name="description"]) {
+    grid-column: span 2;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Align buttons correctly at the bottom row */
+form div.submit,
+form div:has(button[type="submit"]) {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Modern inputs mimicking the image fields */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.15);
+}
+
+/* Action Buttons */
+input[type="submit"],
+button[type="submit"] {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Table Design (Index View) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    text-align: left;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color) !important; /* Overrides border="1" attribute */
+}
+
+th,
+td {
+    padding: 14px 18px;
+    font-size: 0.925rem;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Action Links & Inline Form Buttons inside Table */
+td a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+td a:hover {
+    background: var(--bg-main);
+    border-color: #cbd5e1;
+}
+
+td form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+td input[type="submit"] {
+    background-color: transparent;
+    color: var(--danger-red);
+    border: 1px solid #fca5a5;
+    padding: 5px 12px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+}
+
+td input[type="submit"]:hover {
+    background-color: #fef2f2;
+    color: #b91c1c;
+}
